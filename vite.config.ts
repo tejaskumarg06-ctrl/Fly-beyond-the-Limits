@@ -5,6 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: '/Fly-beyond-the-Limits/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
