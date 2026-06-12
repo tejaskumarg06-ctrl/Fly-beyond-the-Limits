@@ -1,0 +1,450 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Jost:wght@200;300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Jost', sans-serif;
+  --font-accent: 'Cinzel', serif;
+  
+  --color-gold-primary: #00B2FF; /* Remapped to Tech Blue */
+  --color-gold-light: #7AD9FF;   /* Remapped to Tech Blue Light */
+  --color-gold-muted: #005F99;   /* Remapped to Tech Blue Muted */
+  --color-peach: #FFD0B4;        /* Soft premium Peach web accent */
+  --color-bg-dark: #06050b;      /* Deeper royal tech blue-black */
+  --color-surface-dark: #0e0d16; /* Clean deep blue-grey surface */
+  --color-card-dark: #141221;    /* Premium squircle background card */
+  --color-warm-white: #F0F4F8;   /* Tech warm tinted-white */
+  --color-muted-gray: #7F8DA4;   /* Cool tech-gray text */
+  --color-accent-blue: #0066FF;  /* Sharp branding tech-blue */
+}
+
+/* Custom Scrollbar for Luxury Aesthetics */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #06050b;
+}
+::-webkit-scrollbar-thumb {
+  background: #005F99;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00B2FF;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #06050b;
+  color: #F0F4F8;
+  font-family: 'Jost', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Luxury Film Grain Overlay */
+.luxury-grain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.gold-border {
+  border: 0.5px solid #00B2FF;
+}
+
+/* Shimmer animation for golden buttons */
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.15) 20%,
+    rgba(255, 255, 255, 0.3) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 3s infinite;
+  content: '';
+}
+
+/* Custom slide in underlines on hover */
+.hover-underline-gold {
+  position: relative;
+}
+.hover-underline-gold::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -4px;
+  left: 0;
+  background-color: #00B2FF;
+  transform-origin: bottom right;
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.hover-underline-gold:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* --- GOOGLE-STYLE INTELLIGENT BUTTON ANIMATIONS & GLOWS --- */
+@keyframes google-fluid-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Beautiful multi-stop color cycle of luxury titanium, vibrant gold, amber, and stellar purple */
+.animate-google-flow {
+  background: linear-gradient(135deg, #090c20, #005F99, #00B2FF, #FFD0B4, #411964, #090c20);
+  background-size: 300% 300%;
+  animation: google-fluid-flow 5s ease infinite;
+}
+
+@keyframes google-orbit {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.google-smart-button {
+  position: relative;
+  overflow: hidden;
+  border-radius: 9999px; /* pristine organic pill */
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Animated border contour simulating Google Gemini premium smart button */
+.google-smart-button::before {
+  content: '';
+  position: absolute;
+  top: -150%;
+  left: -150%;
+  width: 400%;
+  height: 400%;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    transparent 0deg,
+    #00B2FF 120deg,
+    #FFD0B4 180deg,
+    transparent 220deg,
+    #411964 280deg,
+    #00B2FF 360deg
+  );
+  animation: google-orbit 4s linear infinite;
+  z-index: 1;
+  opacity: 0.85;
+}
+
+.google-smart-button::after {
+  content: '';
+  position: absolute;
+  inset: 1.5px;
+  background: #06050b;
+  border-radius: 9999px;
+  z-index: 2;
+  transition: background 0.3s;
+}
+
+.google-smart-button:hover::after {
+  background: #0f0d19;
+}
+
+.google-smart-button > * {
+  position: relative;
+  z-index: 3;
+}
+
+/* --- SVG ANIMATION TRAILING KEYFRAMES --- */
+@keyframes draw-path {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-draw-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw-path 6s cubic-bezier(0.25, 1, 0.5, 1) forwards infinite;
+}
+
+@keyframes flight-loop {
+  0% {
+    motion-offset: 0%;
+    offset-distance: 0%;
+  }
+  100% {
+    motion-offset: 100%;
+    offset-distance: 100%;
+  }
+}
+
+/* Custom keyframes for smooth airplane pulse */
+@keyframes jet-pulse {
+  0%, 100% {
+    transform: scale(0.95);
+    opacity: 0.85;
+    filter: drop-shadow(0 0 4px rgba(232, 201, 122, 0.4));
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+    filter: drop-shadow(0 0 12px rgba(232, 201, 122, 0.8));
+  }
+}
+
+.animate-jet-pulse {
+  animation: jet-pulse 3s ease-in-out infinite;
+}
+
+@keyframes plane-glide {
+  0% {
+    transform: translate(20px, 150px) rotate(-18deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  50% {
+    transform: translate(300px, 18px) rotate(0deg);
+    opacity: 1;
+  }
+  92% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(580px, 150px) rotate(18deg);
+    opacity: 0;
+  }
+}
+
+.animate-plane-glide {
+  animation: plane-glide 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* --- GOOGLE-STYLE FILL-ANIMATION OVAL BUTTONS --- */
+.google-oval-btn {
+  position: relative;
+  overflow: hidden;
+  border-radius: 9999px !important; /* Forces perfect oval */
+  border: 1px solid rgba(0, 178, 255, 0.45);
+  color: #F0F4F8;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+}
+
+/* Radial expansion fill container */
+.google-oval-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00B2FF, #FFD0B4, #005F99);
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1), height 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0;
+}
+
+.google-oval-btn:hover::before {
+  width: 320%;
+  height: 480%;
+  opacity: 1;
+}
+
+.google-oval-btn:hover {
+  color: #06050b !important;
+  border-color: #FFD0B4;
+  box-shadow: 0 0 25px rgba(0, 178, 255, 0.5), 0 0 10px rgba(255, 208, 180, 0.3);
+  transform: translateY(-2px);
+}
+
+.google-oval-btn-secondary {
+  position: relative;
+  overflow: hidden;
+  border-radius: 9999px !important;
+  border: 1px solid rgba(240, 244, 248, 0.25);
+  color: #F0F4F8;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: transparent;
+}
+
+/* Slide/Sweep sweep fill container */
+.google-oval-btn-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(0, 178, 255, 0.15), rgba(255, 208, 180, 0.35));
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: -1;
+}
+
+.google-oval-btn-secondary:hover::before {
+  transform: translateX(100%);
+}
+
+.google-oval-btn-secondary:hover {
+  border-color: #00B2FF;
+  box-shadow: 0 0 15px rgba(0, 178, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Pre-filled flowing button that expands highlights on hover */
+.google-oval-btn-filled {
+  position: relative;
+  overflow: hidden;
+  border-radius: 9999px !important;
+  background: #00B2FF;
+  color: #06050b;
+  font-weight: 600;
+  border: 1px solid #00B2FF;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.google-oval-btn-filled::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: #FFD0B4;
+  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1), height 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0;
+}
+
+.google-oval-btn-filled:hover::before {
+  width: 300%;
+  height: 450%;
+  opacity: 1;
+}
+
+.google-oval-btn-filled:hover {
+  color: #06050b !important;
+  border-color: #FFD0B4;
+  box-shadow: 0 0 30px rgba(0, 178, 255, 0.45), 0 0 15px rgba(255, 208, 180, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Google-style shifting textile gradient */
+@keyframes text-gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-text-gradient {
+  background: linear-gradient(90deg, #00B2FF, #FFD0B4, #00B2FF, #0066FF, #FFD0B4, #00B2FF);
+  background-size: 200% auto;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  animation: text-gradient-flow 6s linear infinite;
+}
+
+/* Custom thunder animation for lightning flashes */
+@keyframes thunder-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 2px rgba(0, 178, 255, 0.4)) drop-shadow(0 0 4px rgba(255, 208, 180, 0.2));
+    opacity: 0.9;
+  }
+  12% {
+    filter: drop-shadow(0 0 15px rgba(255, 208, 180, 1)) drop-shadow(0 0 30px rgba(0, 178, 255, 0.9));
+    opacity: 1;
+    transform: scale(1.02);
+  }
+  16% {
+    filter: drop-shadow(0 0 2px rgba(0, 178, 255, 0.3));
+    opacity: 0.75;
+    transform: scale(0.99);
+  }
+  19% {
+    filter: drop-shadow(0 0 18px rgba(0, 178, 255, 0.95)) drop-shadow(0 0 35px rgba(255, 208, 180, 0.95));
+    opacity: 1;
+    transform: scale(1.04);
+  }
+  24% {
+    filter: drop-shadow(0 0 2px rgba(0, 178, 255, 0.4)) drop-shadow(0 0 4px rgba(255, 208, 180, 0.2));
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  65% {
+    filter: drop-shadow(0 0 2px rgba(0, 178, 255, 0.4)) drop-shadow(0 0 3px rgba(255, 208, 180, 0.2));
+    opacity: 0.9;
+    transform: scale(1);
+  }
+}
+
+.animate-thunder {
+  animation: thunder-glow 4s infinite ease-in-out;
+}
+
+

@@ -1,0 +1,6 @@
+{
+  "name": "AeroLux Private Jet Charter",
+  "description": "Ultra-premium private jet charter and luxury travel portfolio offering private aviation services, fleet showcase, custom trip planning, and membership tiers.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
